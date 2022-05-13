@@ -1,0 +1,8 @@
+django
+djangorestframework
+django-getenv
+dj_database_url
+psycopg2-binary
+drf-writable-nested
+django-filter
+django-phonenumber-field[phonenumbers]

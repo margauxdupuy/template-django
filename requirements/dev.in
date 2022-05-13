@@ -1,0 +1,6 @@
+-r base.txt
+
+flake8
+pytest-django
+factory-boy
+coverage

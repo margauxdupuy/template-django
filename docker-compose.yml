@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - .:/opt/template-django
+    environment:
+      - DJANGO_SETTINGS_MODULE=template-django.settings.dev
+    command: sh -c
+      "./bin/wait-for-it.sh db:5432 &&
+      ./manage.py migrate &&
+      ./manage.py runserver 0.0.0.0:8000"
+  db:
+    image: postgres:13
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=template-django
+      - POSTGRES_PASSWORD=template-django
+      - POSTGRES_DB=template-django
